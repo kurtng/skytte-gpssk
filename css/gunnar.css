@@ -1,0 +1,243 @@
+
+table.PickPatrol
+{
+	background-color: silver;
+	border-style: groove;
+	border-color: #444444;
+	width: 100%;
+}
+
+th.PickPatrol
+{
+	background-color: #000000;
+	font-size: 16px;
+	color: #ffffff;
+	font-style: italic;
+	text-align: left;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+}
+
+tr.PickPatrol
+{
+	background-color: #cccccc;
+	color: #000000;
+}
+
+tr.PickPatrol:Hover
+{
+	background-color: #ffff00;
+	color: #000000;
+}
+
+table.ShowPayments
+{
+	background-color: green;
+	border-color: #444444;
+	width: 100%;
+}
+
+th.ShowPayments
+{
+	background-color: #000000;
+	font-size: 16px;
+	color: #ffffff;
+	font-style: italic;
+	text-align: left;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+}
+
+tr.ShowPayments
+{
+	background-color: #cccccc;
+	color: #000000;
+}
+
+tr.BookedPatrol
+{
+	background-color: #000066;
+	color: #cccccc;
+	font-style: italic;
+}
+
+tr.BookedPatrol:Hover
+{
+	background-color: #000088;
+	color: #cccccc;
+	font-style: italic;
+}
+
+td.Info
+{
+	color: #0000ff;
+	font-size: 14px;
+	font-weight: bold;	
+	text-align: left;	
+}
+	
+
+
+td.PickPatrol
+{
+	padding-left: 5px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	cursor: pointer;
+}
+
+td.PickPatrol:Hover
+{
+	cursor: pointer;
+}
+
+
+
+table.PickCompetition
+{
+	background-color: silver;
+	border-style: groove;
+	border-color: #444444;
+	width: 75%;
+}
+
+th.PickCompetition
+{
+	background-color: #000000;
+	font-size: 20px;
+	color: #ffffff;
+	font-style: italic;
+	text-align: left;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+}
+
+td.PickCompetition
+{
+	padding-left: 5px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+.CompOpen
+{
+	background-color: #00aa00;
+	color: #ffffff;
+	cursor: pointer;
+}
+
+tr.CompOpen:Hover
+{
+	background-color: #00ff00;
+	color: #000000;
+	cursor: pointer;
+}
+
+.CompUnknown
+{
+	background-color: #aaaa00;
+	color: #ffffff;
+}
+
+tr.CompUnknown:Hover
+{
+	background-color: #ffff00;
+	color: #000000;
+}
+
+.CompClosed
+{
+	background-color: #0000aa;
+	color: #ffffff;
+	cursor: pointer;
+}
+
+tr.CompClosed:Hover
+{
+	background-color: #0000ff;
+	color: #ffffff;
+	cursor: pointer;
+}
+
+.CompRunning
+{
+	background-color: #aa0000;
+	color: #ffffff;
+}
+
+tr.CompRunning:Hover
+{
+	background-color: #ff0000;
+	color: #ffffff;
+	cursor: pointer;
+}
+
+.CompArchived
+{
+	background-color: #cccccc;
+	color: #888888;
+}
+
+tr.CompArchived:Hover
+{
+	background-color: #888888;
+	color: #cccccc;
+}
+
+.left
+{
+	text-align: left;
+}
+
+
+
+div.shooters
+{
+	z-index: 2;
+	visibility: hidden;
+	font-size: 8px;
+	border: 2;
+	padding: 5 5 5 5;
+	border-style: inset;
+	position: absolute;
+	top: 50px;
+	left: 50%;
+ 	width: 48%;
+ 	bottom-margin: 10px;
+ 	overflow: auto;
+ 	height: 50%;
+ 	background-color: #dddddd;
+}
+
+tr.ShooterListGrey
+{
+	background-color: #dddddd;
+	color: #000000;
+	font-size: 11px;	
+	text-align: left;	
+}
+	
+tr.ShooterListPink
+{
+	background-color: #ffdddd;
+	color: #000000;
+	font-size: 11px;	
+	text-align: left;	
+}
+
+th.ShooterList
+{
+	background-color: #666666;
+	color: #ffffff;
+	font-size: 11px;
+	text-align: left;	
+}
+
+td.MyClub
+{
+	color: #ff4400;
+}
+

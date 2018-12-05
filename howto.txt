@@ -1,0 +1,65 @@
+1. Ladda ner och installera apache http server: httpd-2.2.16-win32-x86-no_ssl.msi
+2. Ladda ner och installera php. v�lj apache 2.2 configuration och mysql extension php-5.2.14-win32-installer.msi
+3. Ladda ner och installera mysql mysql-5.1.50-win32.msi
+4. om har problem med krashande php g�r som i slutet av dokumentet:
+5.  i Http.conf i apache Alias /skytte "C:/Documents and Settings/swegkt/Desktop/gpssk_utv/skytte"
+6. i http.conf l�gg til lf�ljande:
+
+<Directory "C:/Documents and Settings/swegkt/Desktop/gpssk_utv/skytte"> 
+    AllowOverride None 
+    # in case you want to use as cgi 
+    Options ExecCGI 
+    Order allow,deny 
+    Allow from all 
+</Directory>
+
+
+7. i php.ini hitta short_open_tag = Off byt med short_open_tag = On
+8. create user on db CREATE USER 'gokhan'@'localhost' IDENTIFIED BY '875CD99826627B93FAFD164FEA4C71'
+8. create user on db CREATE USER 'www'@'%' IDENTIFIED BY '875CD99826627B93FAFD164FEA4C71'
+9. grant acces 
+	GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,EXECUTE
+         ON gokhan.*
+         TO 'gokhan'@'localhost'
+         TO 'www'@'%'
+10. displayerrors in php.ini
+11. error_reporting  =  E_ALL & ~E_NOTICE & ~E_DEPRECATED
+--------------------------------------------------------------------------------
+ 
+I've had similar problems with Apache/2.2.9 (Win32) & php 5.2.6. 
+After experimenting with different options here's an advise: 
+
+In httpd.conf make sure you added php directory like that: 
+Code: 
+
+<Directory "C:/Program Files/php"> 
+    AllowOverride None 
+    # in case you want to use as cgi 
+    Options ExecCGI 
+    Order allow,deny 
+    Allow from all 
+</Directory> 
+ 
+
+
+Also add php module (if you use php as module) 
+Code: 
+
+PHPIniDir "C:/Program Files/PHP/" 
+LoadModule php5_module "C:/Program Files/PHP/php5apache2_2.dll" 
+ 
+register_globals should be Off
+
+Now, make sure Apache is not running, copy libmysql.dll file from PHP folder to Apache/bin. Rename original file in 'Apache/bin' before overwriting it, just in case. 
+
+
+In php.ini file, try to avoid php_threads.dll extension if possible. 
+
+
+Other suggestion: try replacing all libs in Apache/bin folder if you can find matching libs in php folder. Just remember to create backup copies first. 
+
+
+-------------------------
+
+11. set global sql_mode=''; RUN THIS to allow '' into NULL columns
+12. SET SQL_SAFE_UPDATES=0; to be ableto update data without where clause

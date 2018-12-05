@@ -1,0 +1,93 @@
+
+body {
+	background: rgb(200,200,220);
+	font-family: Sans-Serif,Verdana, Arial;
+	font-weight: normal;
+	color: green;
+}
+
+body.header {
+	background: rgb(150,150,170);
+	vertical-align: center;
+	text-color: black;
+}
+
+body.menu {
+	background: rgb(190,190,210);
+	text-decoration: none;
+}
+
+h1.header {
+	font-family: Sans-Serif,Verdana,Arial;
+	font-style: italic;
+	font-weight: bold;
+	color: black;
+}
+
+button {
+	background: black;
+	color: white;
+}
+
+input {
+	color: darkblue;
+	font-weight: bold;
+}
+
+div.error {
+	color: red;
+	background-color: yellow;
+	font-weight: normal;
+}
+
+a.menuItem {
+	color: black;
+	font-weight: normal;
+	font-size: 10px;
+	text-decoration: none;
+}
+
+a.menuItemActive {
+	color: black;
+	font-weight: normal;
+	font-size: 10px;
+	text-decoration: none;
+	background-color: #00FF00
+}
+
+a.menuItem:Hover {
+	background-color: #000000;
+	color: #ffffff;
+}
+
+a.menuItemBold {
+	color: black;
+	font-weight: bold;
+	font-size: 10px;
+	text-decoration: none;
+}
+
+a.menuItemBold:Hover {
+	background-color: #000000;
+	color: #ffffff;
+}
+
+td.user {
+	font-size: 9px;
+	background-color: black;
+	color: white;
+}
+
+td.menuItem {
+	color: black;
+	font-weight: normal;
+	font-size: 10px;
+	text-decoration: none;
+}
+
+td.menuItemBold {
+	color: black;
+	font-weight: bold;
+	font-size: 10px;
+	text-decoration: none;
+}
