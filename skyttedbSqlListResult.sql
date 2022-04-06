@@ -103,7 +103,7 @@ declare cur_cls_prec cursor for
 	  join tbl_Pistol_Entry e on (e.Id = s.EntryId)
 	  join tbl_Pistol_Shot p on (p.Id = e.ShotId)
 	  join tbl_Pistol_ShotClass c on (c.Id = s.ShotClassId)
-	  order by s.ShotClassId,  s.Total desc, s.Points desc, s.ExtraScore desc, s.SuperScore desc;
+	  order by s.ShotClassId,  s.Total desc, s.Targets desc, s.Points desc, s.ExtraScore desc, s.SuperScore desc;
       
 declare cur_cls_grp_prec cursor for
 	  select s.EntryId,
@@ -118,8 +118,8 @@ declare cur_cls_grp_prec cursor for
 	  join tbl_Pistol_Entry e on (e.Id = s.EntryId)
 	  join tbl_Pistol_Shot p on (p.Id = e.ShotId)
 	  join tbl_Pistol_ShotClass c on (c.Id = s.ShotClassId)
-	  order by s.MedalGroupId, s.Total desc, s.Points desc, s.ExtraScore desc, s.SuperScore desc; 
-      -- borde göra så här för mästerskap bara annars SuperScore först kanske
+	  order by s.MedalGroupId, s.Total desc, s.Targets desc, s.Points desc, s.ExtraScore desc, s.SuperScore desc; 
+      
 	
 	
 	if (pShotClassId = 0)
@@ -226,15 +226,15 @@ if (gunClassId = 0)
 	)
 	select s.EntryId,
 		e.ShotClassId,
-		-- sum( ifnull(s.Hits, 0)),
-    case vScoreType
-			when 'P' or 'S' then sum(decodePrecision(ifnull(s.Hits,0)))
+		
+    case 
+			when vScoreType = 'P' or vScoreType = 'S' then sum(decodePrecision(ifnull(s.Hits,0)))
 			else sum( ifnull(s.Hits,0) )
 			end,
 		sum( ifnull(s.Targets, 0)),
-		case vScoreType
-			when 'N' then sum( ifnull(s.Hits,0) + ifnull(s.Targets,0) )
-      when 'P' or 'S' then sum(decodePrecision(ifnull(s.Hits,0)))
+		case 
+			when vScoreType = 'N' then sum( ifnull(s.Hits,0) + ifnull(s.Targets,0) )
+      when vScoreType = 'P' or vScoreType = 'S' then sum(decodePrecision(ifnull(s.Hits,0)))
 			else sum( ifnull(s.Hits,0) )
 			end,
 		sum( ifnull(s.Points, 0) )
@@ -248,7 +248,7 @@ if (gunClassId = 0)
 	
 	
 	
-    -- super score create
+    
 	open cur_super;
 	
 	set vCurEntryId = 0;
@@ -297,7 +297,7 @@ if (gunClassId = 0)
 	end loop cur_loop0;
     
     
-    -- extra score create
+    
     open cur_extra;
 	
   set vCurEntryId = 0;
@@ -368,7 +368,8 @@ if (gunClassId = 0)
 	set r.MedalGroupId = m.MedalGroupId
 	;
 	
-	
+	-- select * from Result where MedalGroupId is null; -- DEBUG
+    
 	insert into MedalGroups (
 		MedalGroupId,
 		People
