@@ -149,6 +149,7 @@ if (gunClassId = 0)
 		Place int null,
 		GroupPlace int null,
 		Medal char(1) null,
+        CanGiveMedals boolean not null default true,
     ExtraScore varchar(200) null
 	);
 	
@@ -368,6 +369,11 @@ if (gunClassId = 0)
 	set r.MedalGroupId = m.MedalGroupId
 	;
 	
+    update Result r
+	join tbl_Pistol_MedalGroup m on (m.Id = r.MedalGroupId)
+	set r.CanGiveMedals = m.CanGiveMedals
+	;
+    
 	-- select * from Result where MedalGroupId is null; -- DEBUG
     
 	insert into MedalGroups (
@@ -553,8 +559,8 @@ else
 	update Result r
 	join MedalGroups g on (g.MedalGroupId = r.MedalGroupId)
 	set Medal = case
-			when r.Total >= g.LastSilverTotal and LastSilverTotal is not null then 'S'
-			when r.Total >= g.LastBronzeTotal and r.Total < g.LastSilverTotal then 'B'
+			when r.CanGiveMedals and r.Total >= g.LastSilverTotal and LastSilverTotal is not null then 'S'
+			when r.CanGiveMedals and r.Total >= g.LastBronzeTotal and r.Total < g.LastSilverTotal then 'B'
 			else ''
 			end
 	;
