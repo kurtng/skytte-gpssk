@@ -3,15 +3,15 @@ session_start();
 include_once "GunnarCore.php";
 
 
-$act=$_POST['myAction'];
-$gunCard = safeSQL($_POST['gunCard']);
-$pwd = $_POST['upasswd'];
+isset( $_POST['myAction'] ) ? $act = $_POST['myAction'] : $act = "";
+isset($_POST['gunCard']) ? $gunCard = safeSQL($_POST['gunCard']) : $gunCard = "";
+isset($_POST['upasswd']) ? $pwd = $_POST['upasswd'] : $pwd = "";
 $msg = "";
 $loginFailed = 0;
 
 $focusPoint = "gunCard";
+isset($_SESSION["shotSession"]) ? $shot = unserialize($_SESSION["shotSession"]) : $shot = null;
 
-$shot = unserialize($_SESSION["shotSession"]);
 if (session_is_registered("shotSession"))
 	http_redirect("welcome.php");
 
@@ -103,7 +103,10 @@ header("Content-Type: text/html; charset=UTF-8");
 <div style="color:red;font-size:20px;">!!! ALLIANSEN 1 för 2016 är flyttad till 19:e Mars !!!</div>
 <div style="color:red;font-size:20px;">Alla bokningar flyttas automatisk. Om ni vill byta starttid avboka först era starter och sedan boka om utan att betala på nätet och ta kontakt med sekreteriatet på tävlingsdagen för att flytta betalningarna.</div>
  -->
-<div>Du kommer att betala online i samband med bokning<img alt="visa" src="RTEmagicC_RTEmagicC_master_mellem.gif.gif"> <img alt="mastercard" src="RTEmagicC_visa_mellem.gif.gif"> </div>
+
+<div style="color:red;font-size:20px;">!! Tyvärr fungerar inte online betalning för nuvarande. Swish eller kontant betalning gäller tills vidare på tävlingsdagen. !!</div>
+
+<!-- div>Du kommer att betala online i samband med bokning<img alt="visa" src="RTEmagicC_RTEmagicC_master_mellem.gif.gif"> <img alt="mastercard" src="RTEmagicC_visa_mellem.gif.gif"> </div-->
 <br/>
 <div><button onclick="alert('Organisationsnummer\n	857209-3394 \n	Kontaktpersons namn, email och telefonnummer \n	Christer Beckman. christer@gpssk.com, 0705-98 88 47 \n 	E-postadress för fakturering \nchrister@gpssk.com \n	Webbadress (URL) till där försäljning äger rum \n	www.okrets.se/skytte');">Föreningsinformation</button></div>
 <div><button onclick="alert('1. Kostnad för en start är 100 kr.\n2. Ingen bytesrätt eller ångerrätt \n3. Den betalda starten måste utnyttjas personligen. \n4. Om ni inte betalar online men ändå lyckas boka en start via webbsidan, garanteras ni ändå inte platsen innan ni betalar för den.\n5.Det kommer att bli möjligt att betala och boka på plats i mån av plats. Gäller dock bara funktionärer och ni utan tillgång till kort. Det kan tillkomma en extra avgift.');">Villkor för online köp</button></div>
