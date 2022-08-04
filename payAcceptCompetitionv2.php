@@ -5,7 +5,7 @@ session_start();
 
 $orderid = $_REQUEST['orderid'];
 
-$orderidarr = split("_", $orderid);
+$orderidarr = explode("_", $orderid);
 $compId = $orderidarr[0];
 $shotId = $orderidarr[1];
 $date = $orderidarr[2];
@@ -88,21 +88,28 @@ Start  : <strong><?=$patrul->startTime?></strong>
 <br/>
 <?}?>
 <br/>
-Pris: <strong><?=100*$antalstart?> SEK</strong>
+Pris: <strong><?=100*$antalstart?> SEK</strong> (0% moms)
 <br/>
 Du har följande orderid: <strong><?=$orderid?></strong>
 <form method="post" name="DIBSForm" action="payCompetition.php">
 	<?while(list($key,$val) = each($_REQUEST)) {?>
 	<input type="hidden" name="<?=$key?>" value="<?=$val?>">
 	<? } ?>
-  <input type="submit" value="Jag accepterar"/>
-</form>
+	<a href="villkor.html" target="_blank">Villkor för online betalning</a>
 
+<input type="submit" value="Jag accepterar"/>
+</form>
+<br/>
+<div>Du kommer att betala online  med VISA eller MasterCard <img alt="visa" src="RTEmagicC_RTEmagicC_master_mellem.gif.gif"> <img alt="mastercard" src="RTEmagicC_visa_mellem.gif.gif"> genom att klicka på "Jag accepterar" knappen ovan </div>
+<br/>
+Betalningen görs till<br/>
+Organisationsnummer: 857209-3394<br/>
+Göteborgs och Bohus läns Pistolskyttekrets<br/>
+Skjutfältsvägen 90<br/>
+431 90 Mölndal<br/>
 <br/>
 Kontakt info: Alliansens sekretariatet.
 <br/>
-Tel: 
-<br/>
-E-post:
-<br/>
+
+
 </html>
