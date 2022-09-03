@@ -126,7 +126,7 @@ header("Content-Type: text/html; charset=UTF-8");
 	</tr>
 	<tr>
 		<td align="right">Har annat problem?</td>
-		<td><a href="mailto:webmaster@gpssk.com?subject=Fråga ang Alliansen">webmaster@GPSSK.com</a></td>
+		<td><a href="mailto:webmaster@gpssk.se?subject=Fråga ang Alliansen">webmaster@GPSSK.se</a></td>
 	</tr>
 </table>
 </center>

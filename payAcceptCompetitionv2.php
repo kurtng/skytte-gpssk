@@ -103,9 +103,14 @@ Du har följande orderid: <strong><?=$orderid?></strong>
 <div>Du kommer att betala online  med VISA eller MasterCard <img alt="visa" src="RTEmagicC_RTEmagicC_master_mellem.gif.gif"> <img alt="mastercard" src="RTEmagicC_visa_mellem.gif.gif"> genom att klicka på "Jag accepterar" knappen ovan </div>
 <br/>
 Betalningen görs till<br/>
+<br/>
 Organisationsnummer: 857209-3394<br/>
 Göteborgs och Bohus läns Pistolskyttekrets<br/>
-Skjutfältsvägen 90<br/>
+<br/>
+Adress: Box 255<br/>
+421 23 VÄSTRA FRÖLUNDA<br/>
+<br/>
+Besöksadress: Skjutfältsvägen 90<br/>
 431 90 Mölndal<br/>
 <br/>
 Kontakt info: Alliansens sekretariatet.
