@@ -196,7 +196,7 @@ header("Content-Type: text/html; charset=UTF-8");
 <?if(!isPrecision($comp->scoreType)) {?>
 <th>Poäng</th>
 <?}?>
-<?if(isSport($comp->scoreType)) {?>
+<?if(isPrecision($comp->scoreType)) {?>
 <th>Inner</th>
 <?}else{?>
 <th>Medalj</th>
@@ -225,7 +225,7 @@ header("Content-Type: text/html; charset=UTF-8");
 				
 				if(isPrecision($comp->scoreType)) {
 					$dtt = $rt;
-					if(isSport($comp->scoreType)) {
+					if(isPrecision($comp->scoreType)) {
 						$rp = 0 + $row["Targets"];
 					}
 				} else {
@@ -260,7 +260,7 @@ header("Content-Type: text/html; charset=UTF-8");
 <?if(!isPrecision($comp->scoreType)) {?>
 <th>Poäng</th>
 <?}?>
-<?if(isSport($comp->scoreType)) {?>
+<?if(isPrecision($comp->scoreType)) {?>
 <th>Inner</th>
 <?}else{?>
 <th>Medalj</th>
@@ -281,7 +281,7 @@ header("Content-Type: text/html; charset=UTF-8");
 				<td><?=$rp?></td>
 				<?}?>
 				
-				<?if(isSport($comp->scoreType)) {?>
+				<?if(isPrecision($comp->scoreType)) {?>
 				<td><?=$rp?></td>
 				<?} else {?>
 				<td><?=$row["Medal"]?></td>
