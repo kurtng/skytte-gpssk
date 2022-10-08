@@ -640,16 +640,16 @@ function getGunCardList($forClubId = -1)
 		return $status;
 	}	
 	
-	function sendMailOmBetalning($email, $tavlingNamn, $vapen, $klass, $patrulno, $startTime, $varde, $orderid, $transactionsid) {
+	function sendMailOmBetalning($email, $tavlingNamn, $vapen, $klass, $patrulno, $startTime, $varde, $orderid, $transactionsid, $extra = '') {
 		$status = "OK";
 			// Send a notification mail
 			$body = "Du har betalat följande start(er) <br/>";
 			$body = $body . "$tavlingNamn  <br/><br/>";
 			
-			$vapen = split("<br/>", $vapen);
-			$klass = split("<br/>", $klass);
-			$patrulno = split("<br/>", $patrulno);
-			$startTime = split("<br/>", $startTime);
+			$vapen = explode("<br/>", $vapen);
+			$klass = explode("<br/>", $klass);
+			$patrulno = explode("<br/>", $patrulno);
+			$startTime = explode("<br/>", $startTime);
 			
 			$antalstart = 0;
 			for($i=0 ; $i<sizeof($vapen) ; $i++ ) {
@@ -665,6 +665,7 @@ function getGunCardList($forClubId = -1)
 			$body = $body . "Pris: $varde <br/>";
 			$body = $body . "Orderid: $orderid <br/>";
 			$body = $body . "Transactionsid: $transactionsid <br/>";
+			$body = $body . $extra;
 			$headers = "Content-type: text/html; charset=UTF-8\r\n" . "From: skytteprogram@okrets.se\r\n";
 			$ok = mail($email, "Skytte - Du har betalat $antalstart start(er)", $body, $headers);
 			if (!$ok)

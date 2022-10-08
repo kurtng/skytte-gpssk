@@ -298,7 +298,7 @@ function loadUnPayedStarts($shotId, $compid = 0) {
 				return;
 		}
 
-		$orderidarr = split("_", $orderid);
+		$orderidarr = explode("_", $orderid);
 		$compId = $orderidarr[0];
 		$shotId = $orderidarr[1];
 		$date = $orderidarr[2];
@@ -358,7 +358,7 @@ function loadUnPayedStarts($shotId, $compid = 0) {
 		if ($debug)
 			print_r("<br>SQL: $sql<br>");
 			
-		$msg = "Anmälan uppdaterad";
+		$msg = "Anmälan uppdaterad.";
 
 		$res = mysqli_query($dbh,$sql);
 

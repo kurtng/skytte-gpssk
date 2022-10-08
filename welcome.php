@@ -119,7 +119,7 @@ header("Content-Type: text/html; charset=UTF-8");
 					?><td></td><?
 					
 					?><td colspan="2">
-						<form method="POST" action="payAcceptCompetitionv2.php">
+						<form method="POST" action="payAcceptCompetitionWithBambora.php" target="_top">
 						
 						<input type="hidden" name="amount" value="<?=10000*$antalstart?>">
 						<input type="hidden" name="merchant" value="90150489">
