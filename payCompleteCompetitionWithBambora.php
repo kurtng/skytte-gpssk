@@ -158,7 +158,7 @@ header("Content-Type: text/html; charset=UTF-8");
 <?if($md5 != $hash) {?>
 	Ogiltigt anrop. Betalning misslyckades
 <?} else if($statuscode == "2" || $statuscode == "5" || $statuscode == "12") {?>
-	Du har betalat <?=$amount?> SEK.<br/>Notera din order id: <strong><?=$orderid?></strong> och transactions id: <strong><?=$transact?></strong>.
+	Du har betalat <?=$amount/100?> SEK.<br/>Notera din order id: <strong><?=$orderid?></strong> och transactions id: <strong><?=$transact?></strong>.
 	<div class="error"><?=$msg?></div>
 <?} else { ?>
 	Ett problem har uppstått.<br/> Notera din order id: <strong><?=$orderid?></strong> och transactions id: <strong><?=$transact?></strong>.
@@ -188,7 +188,7 @@ Tävling : <strong><?=$comp->name?></strong>
 ?>
 
 <br/>
-Pris  : <strong><?=$amount?> SEK</strong>
+Pris  : <strong><?=$amount/100?> SEK</strong>
 <br/>
 Du har följande orderid: <strong><?=$orderid?></strong>	
 <br/>

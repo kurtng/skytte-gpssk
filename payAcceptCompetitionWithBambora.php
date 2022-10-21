@@ -107,6 +107,7 @@ Du har följande orderid: <strong><?=$orderid?></strong>
   	$request["order"] = array();
   	$request["order"]["id"] = $bamboraorderid;
   	$request["order"]["amount"] = strval(10000*$antalstart);
+	$request["instantcaptureamount"] = strval(10000*$antalstart);
   	$request["order"]["currency"] = "SEK";
 
   	$request["url"] = array();
