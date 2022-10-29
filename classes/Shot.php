@@ -339,7 +339,7 @@ class Shot
 		
 		$result = mysqli_query($dbh,$sql);
 		
-		print mysqli_error();
+		print mysqli_error($dbh);
 		
 		while ($obj = mysqli_fetch_object($result))
 		{

@@ -47,7 +47,7 @@ function openDB()
 
 	/* check connection */
 	if (!$dbh) {
-		printf("Database connection failed: %s\n", mysqli_error());
+		printf("Database connection failed: %s\n", mysqli_error($dbh));
 		exit();
 	}
 	mysqli_select_db($dbh, getLoginName());

@@ -1,4 +1,6 @@
 <?php
+//ini_set('display_errors', 1);
+//ini_set('display_startup_errors', 1);
 include_once "GunnarCore.php";
 session_start();
 
@@ -41,10 +43,6 @@ header("Content-Type: text/html; charset=UTF-8");
 </head>
 <script language="javascript">
 
-  function setFocus()
-  {
-  		document.forms[0].elements["<?=$focusPoint?>"].focus();
-  }
   
   function pick()
   {
@@ -72,7 +70,7 @@ header("Content-Type: text/html; charset=UTF-8");
   }
 </script>
 
-<body onload="<? if( $_GET['projektor']) {?>scroll(0,0);setTimeout('rullapa()',2000);<?}?>">
+<body onload="<? if( isset($_GET['projektor']) && $_GET['projektor']) {?>scroll(0,0);setTimeout('rullapa()',2000);<?}?>">
 <div class="error"><?=$msg?></div>
 <br>
 
