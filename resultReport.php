@@ -1,4 +1,7 @@
 <?php
+//ini_set('display_errors', 1);
+//ini_set('display_startup_errors', 1);
+
 include_once "GunnarCore.php";
 
 session_start();
@@ -30,8 +33,8 @@ session_start();
 
 	$list = $compDay->genScoreCards();
 	
-	define('FPDF_FONTPATH','classes/');
-	require('classes/fpdf.php');
+	define('FPDF_FONTPATH','classes/fonts/');
+	require('classes/fpdf_new.php');
 
 class ResultList extends FPDF
 {
@@ -306,7 +309,7 @@ class ResultList extends FPDF
 }
 
 $pdf=new ResultList();
-$pdf->Open();
+//$pdf->Open();
 $pdf->AddPage();
 
 $pdf->SetDrawColor(200);

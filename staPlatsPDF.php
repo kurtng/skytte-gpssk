@@ -1,4 +1,7 @@
 <?php
+//ini_set('display_errors', 1);
+//ini_set('display_startup_errors', 1);
+
 include_once "GunnarCore.php";
 session_start();
 
@@ -29,8 +32,8 @@ session_start();
 
 	//$list = $compDay->genScoreCards();
 	
-	define('FPDF_FONTPATH','classes/');
-	require('classes/fpdf.php');
+	define('FPDF_FONTPATH','classes/fonts/');
+	require('classes/fpdf_new.php');
 
 class ScoreCard extends FPDF
 {
@@ -129,7 +132,7 @@ class ScoreCard extends FPDF
 		// Print the gun card no and name
 		$this->SetY($this->cy + 10);
 		$this->cy += 10;
-		$this->Cell(20, 10, "Plats." . ${shooterNo},0,0,'L',0);
+		$this->Cell(20, 10, "Plats." . $[shooterNo],0,0,'L',0);
 		$this->Cell(20, 10, $person["GunCard"], 0,0,'L',0);
 		$this->Cell(40, 10, iconv("UTF-8", "CP1252", $person["ShotName"]), 0,0,'L',0);
 		$this->Cell(120, 10, $person["ShotClassName"] . " (" . $person["GunClassName"] . ")", 0,0,'L',0);
@@ -150,7 +153,7 @@ class ScoreCard extends FPDF
 }
 
 $pdf=new ScoreCard();
-$pdf->Open();
+//$pdf->Open();
 //$pdf->AddFont('DejaVu','B','dejavusans-bold.php');
 $pdf->AddPage();
 

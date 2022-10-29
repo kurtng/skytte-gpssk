@@ -1,4 +1,7 @@
 <?php
+//ini_set('display_errors', 1);
+//ini_set('display_startup_errors', 1);
+
 include_once "GunnarCore.php";
 session_start();
 
@@ -29,11 +32,12 @@ session_start();
 
 	//$list = $compDay->genScoreCards();
 	
-	define('FPDF_FONTPATH','classes/');
-	require('classes/fpdf.php');
+	define('FPDF_FONTPATH','classes/fonts/');
+	require('classes/fpdf_new.php');
 
 class ScoreCard extends FPDF
 {
+	
 	private $cx = 0;
 	private $cy = 0;
 	private $leftMarg = 10;
@@ -241,7 +245,7 @@ class ScoreCard extends FPDF
 }
 
 $pdf=new ScoreCard();
-$pdf->Open();
+//$pdf->Open();
 //$pdf->AddFont('DejaVu','B','dejavusans-bold.php');
 $pdf->AddPage();
 
