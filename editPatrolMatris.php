@@ -49,7 +49,7 @@ switch ($act) {
 				
 		break;
 	case "pick":
-		/*
+			/*
 			$score->entryId = 0;
 			$score->compDayId = $compDay->id;
 			$score->patrolId = $patrol->id;
@@ -132,7 +132,10 @@ document.onkeypress = Check_key;
 <div class="error"><?=$msg?></div>
 <br>
 
-<form method="POST"><input type="hidden" name="myAction">
+<form method="POST">
+	
+<input type="hidden" name="myAction">
+<input type="hidden" name="compDayId">
 
 <center>
 
