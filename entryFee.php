@@ -40,7 +40,7 @@ else {
 switch ($act) {
 	case "pay":
 		$entry->load($_POST["entryId"]);
-		$ok = $entry->setEntryStatus('P');
+		$ok = $entry->setEntryStatus('P',$shot->gunCard,1);
 		// Did we suceed?
 		if ($ok)
 		{
@@ -52,7 +52,7 @@ switch ($act) {
 		break;
 	case "cancelPayment":
 		$entry->load($_POST["entryId"]);
-		$ok = $entry->setEntryStatus('U');
+		$ok = $entry->setEntryStatus('U',$shot->gunCard,1);
 		// Did we suceed?
 		if ($ok)
 		{
@@ -77,6 +77,7 @@ header("Content-Type: text/html; charset=UTF-8");
 <head>
 <title>EntryFee</title>
 <link rel="stylesheet" href="gunnar1.css" type="text/css">
+<link rel="stylesheet" href="css/gunnar.css" type="text/css">
 
 </head>
 <script language="javascript">
@@ -218,7 +219,8 @@ header("Content-Type: text/html; charset=UTF-8");
 <th>Klass</th>
 <th>Patrull no</th>
 <th>Betalningstid</th>
-<th>Transactions id med online betalning</th>
+<th>Transactions id med online betalning eller betalningen tagits emot av skytt me kortnr.</th>
+<th>Status (1:Manuel betalnig, 2:Online betalning)</th>
 </tr>
 <? 
 	$eid = 0;
@@ -251,13 +253,46 @@ header("Content-Type: text/html; charset=UTF-8");
 		<td><?=$row["Gun"]?></td>
 		<td><?=$row["PatrolNumber"]?></td>
 		<td><?=$row["PayDate"]?></td>
-		<td><?=$trstr?> - Status : <?=$sts?></td>
+		<td><?=$trstr?></td>
+		<td><?=$sts?></td>
 		
 	</tr>
 	<? } ?>
 </table>
 <? } // If shot ?>
 </center>
+
+
+<? if ($comp->id != 0 &&  $eshot->id != 0)  { 
+	$payments = $comp->getDibsPayments($comp->id, $eshot->id);
+
+?><br/>Skyttens online betalningar för aktuella tävlingen
+
+	<? if(!empty($payments)) { ?>
+	<table class="ShowPayments" cellspacing="0" cellpadding="0">
+	<tr class="ShowPayments">
+	<th class="ShowPayments">Datum</th>
+	<th class="ShowPayments">Värde</th>
+	<th class="ShowPayments">Transaktion Id</th>
+	<th class="ShowPayments">Order Id</th>
+	</tr>
+	<?	
+		foreach ($payments as $payment) { 
+	?>
+		<tr class="ShowPayments">
+			<td class="ShowPayments"><?=$payment->PayDate?></td>
+			<td class="ShowPayments"><?=$payment->Amount?></td>
+			<td class="ShowPayments"><?=$payment->TransactionId?></td>
+			<td class="ShowPayments"><?=$payment->OrderId?></td>
+		</tr>
+	<? } ?>
+	</table>
+	<?} else {
+		?><br/>Inga betalningar än<?
+	}
+
+}
+?>
 
 </form>
 </body>
