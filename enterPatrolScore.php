@@ -1,4 +1,6 @@
 <?php
+//ini_set('display_errors', 1);
+//ini_set('display_startup_errors', 1);
 session_start();
 include_once "GunnarCore.php";
 
@@ -257,7 +259,7 @@ document.onkeypress = Check_key;
 			<td align="right">Tävling:</td>
 				<td>
 				<?
-					$cps = $comp->getList("> 2"); // Get competitions I can enter scores for
+					$cps = $comp->getList("= 3"); // Get competitions I can enter scores for
 					$num = sizeof($cps);
 					$selected = "";
 					if ($comp->id == 0)
@@ -265,7 +267,7 @@ document.onkeypress = Check_key;
 				?>
 					
 				<select name="compId" onChange="javascript:pick();">
-				<option value="0"<?=$selected?>>-- Välj Tävling --</option>
+				<option value="0"<?=$selected?>>-- Välj Tävling (bara status "Tävling pågår") --</option>
 					<?
 					foreach ($cps as $key => $value)
 					{
@@ -478,7 +480,7 @@ document.onkeypress = Check_key;
 					$onChangeFormats[7] = "";
 				}
 				
-			} else {//F�lt
+			} else {//Fält
 			
 				$rows = 3;
 				$tdHeaderTexts = array(
@@ -487,9 +489,9 @@ document.onkeypress = Check_key;
 					3 => ""
 				);
 				$tdLastTexts = array(
-					1 => "Tr�ffar", 
-					2 => "M�l", 
-					3 => "Po�ng"
+					1 => "Träffar", 
+					2 => "Mål", 
+					3 => "Poäng"
 				);
 				$scoreArrayTags = array(
 					1 => "Hits", 
