@@ -1,4 +1,6 @@
 <?php
+//ini_set('display_errors', 1);
+//ini_set('display_startup_errors', 1);
 include_once "GunnarCore.php";
 session_start();
 
@@ -64,6 +66,14 @@ session_start();
 				}
 			}
 			break;		
+	}
+	if($compDay->competitionId != $comp->id ) {
+		//$msg = "INTE SAMMA TÄVLING DAG TILLHÖR INTE TÄVLING " . $compDay->competitionId . " " . $comp->id;
+		unset($_SESSION['competitionDayId']);
+		unset($_SESSION['competitionDayNo']);
+		$compDay = new CompetitionDay();
+	} else {
+		//$msg = " " . $compDay->competitionId . " " . $comp->id;
 	}
 header("Content-Type: text/html; charset=UTF-8");
 ?>
