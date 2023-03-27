@@ -1,9 +1,11 @@
 <?php
+//ini_set('display_errors', 1);
+//ini_set('display_startup_errors', 1);
 include_once "GunnarCore.php";
 session_start();
 
 	$debug = 0;
-	$act=$_POST['myAction'];
+	isset( $_POST['myAction'] ) ? $act = $_POST['myAction'] : $act = "";
 	$msg = "";
 
 	// We must have selected a competition day first
@@ -13,9 +15,13 @@ session_start();
 	$shot = unserialize($_SESSION["shotSession"]);
 	$compDayId = $_SESSION["competitionDayId"];
 	
+	$compId = $_SESSION["competitionId"];
+	$comp = new Competition();
+	$comp->load($compId); // Reload to get the guns list
+
 	$patrol = new Patrol();
 	
-	$focusPoint = "dayNo";
+	$focusPoint = "patrolId";
 	
 	
 	switch ($act) {
@@ -38,12 +44,14 @@ session_start();
 					$patrol->sortOrder = 0;
 					$patrol->id = 0;
 				}
+				$patrol->startTime = $comp->startDate;
 				
 				$ok = $patrol->save();
 				
 				if (!$ok) {
 					$msg = "Misslyckades med att spara. " . $msg;
-					if (eregi("duplic.*", $msg))
+					if(preg_match('/duplic.*/i',$msg))
+					//if (eregi("duplic.*", $msg))
 						$msg = "Patrullen finns redan.";
 					break;
 				}
@@ -78,7 +86,7 @@ session_start();
 			break;
 		default:
 			// Try to load in the selected day
-			if ($_POST['patrolId'] > 0)
+			if (isset( $_POST['patrolId'] )  && $_POST['patrolId'] > 0)
 			{
 				$patrol->load($_POST['patrolId']);
 				$_SESSION["patrolId"] = $patrol->id;
@@ -137,6 +145,10 @@ header("Content-Type: text/html; charset=UTF-8");
 <tr>
 	<td align="right">Tävling:</td>
 	<td><?=$_SESSION["competitionName"]?></td>
+</tr>
+<tr>
+	<td align="right">Tävlings datum:</td>
+	<td><?=$comp->startDate?></td>
 </tr>
 <tr>
 	<td align="right">Tävlingsdag:</td>
