@@ -144,7 +144,7 @@ document.onkeypress = Check_key;
 			<td align="right">Tävling:</td>
 				<td>
 				<?
-					$cps = $comp->getList(">= 0"); // Get competitions I can enter scores for
+					$cps = $comp->getList("< 4"); // Get competitions I can enter scores for
 					$num = sizeof($cps);
 					$selected = "";
 					if ($comp->id == 0)
@@ -206,7 +206,7 @@ document.onkeypress = Check_key;
 
 	<br>
 
-	<? if ($compDay->id > 0 ) {
+	<? if ($compDay->id > 0 && $comp->id == $compDay->competitionId ) {
 		$listGunClasses = $compDay->getGunClasses();
 		$listPatrols = $compDay->getPatrols();
 		$list = $compDay->genPatrolChoices();
