@@ -59,7 +59,8 @@ include_once "GunnarCore.php";
 			$_SESSION["scoreType"] = $comp->scoreType;
 			$_SESSION["masterskap"] = $comp->masterskap;
 			$_SESSION["onlineBetalning"] = $comp->onlineBetalning;
-			session_unregister("competitionDayId");
+			
+			unset($_SESSION['competitionDayId']);
 			break;
 		default:
 			// Load competition

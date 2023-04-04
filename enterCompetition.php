@@ -1,4 +1,6 @@
 <?php
+//ini_set('display_errors', 1);
+//ini_set('display_startup_errors', 1);
 include_once "GunnarCore.php";
 session_start();
 
@@ -100,7 +102,8 @@ session_start();
 				
 				if( $compDay->competitionId != $selectedCompId) {
 					$comp->load($selectedCompId);
-					session_unregister("entryId");
+					unset($_SESSION['entryId']);
+					
 					$patrol = null;
 					$compDay = null;
 					$entry = null;
